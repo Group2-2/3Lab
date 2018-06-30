@@ -17,4 +17,9 @@ public class StartController {
     String login() {
         return "login";
     }
+
+    @GetMapping("/registration")
+    String registration() {
+        return "registration";
+    }
 }

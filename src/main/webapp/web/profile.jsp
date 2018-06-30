@@ -18,7 +18,6 @@
             complete: [
                 function (response) {
                     var obj = $.parseJSON(response.responseText);
-                    alert(response.responseText);
                     var object = obj.object;
                     $("#firstName").val(object.firstName);
                     $("#lastName").val(object.lastName);
