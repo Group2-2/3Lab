@@ -25,7 +25,7 @@
                             var obj = $.parseJSON(response.responseText);
                             var status = obj.status;
                             if (status) {
-                                window.open("/test","_self")
+                                window.open("/search","_self")
                             } else {
                                 alert('Error authorisation')
                             }

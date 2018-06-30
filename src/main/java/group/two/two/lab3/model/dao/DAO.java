@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 public interface DAO {
     boolean login(Login login);
     boolean register(User user);
+    User getUser(String login);
 }

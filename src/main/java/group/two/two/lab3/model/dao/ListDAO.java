@@ -34,4 +34,9 @@ public class ListDAO implements DAO {
         }
         return false;
     }
+
+    @Override
+    public User getUser(String login) {
+        return map.get(login);
+    }
 }
