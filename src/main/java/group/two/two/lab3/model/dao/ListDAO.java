@@ -61,4 +61,9 @@ public class ListDAO implements DAO {
     public Genre getGenre(int id) {
         return null;
     }
+
+    @Override
+    public Book getBook(int id) {
+        return null;
+    }
 }
