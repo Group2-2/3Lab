@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RestController
 public class SearchController {
@@ -27,10 +26,10 @@ public class SearchController {
 
     @RequestMapping(value = "/genre", method = RequestMethod.POST, produces = {"application/json"})
     @ResponseBody
-    Answer<Genre> genre(@RequestParam(value="id", defaultValue="0") int id,
-                        HttpSession session) {
+    Answer<Item> genre(@RequestParam(value="id", defaultValue="0") int id,
+                       HttpSession session) {
         Login login = (Login) session.getAttribute("login");
-        Genre genre = null;
+        Item genre = null;
         if (login != null && dao.login(login)) {
             genre = dao.getGenre(id);
         }
@@ -53,7 +52,7 @@ public class SearchController {
     @ResponseBody
     Answer<List<Book>> search(HttpSession session) {
         Login login = (Login) session.getAttribute("login");
-        Genre genre = null;
+        Item genre = null;
         if (login != null && dao.login(login)) {
             int i = (int) session.getAttribute("genre");
             genre = dao.getGenre(i);

@@ -30,6 +30,16 @@ public class ListDAO implements DAO {
     }
 
     @Override
+    public void connection() {
+
+    }
+
+    @Override
+    public void disconnection() {
+
+    }
+
+    @Override
     public boolean login(Login login) {
         if (map.containsKey(login.getLogin())) {
             Login buf = new Login(map.get(login.getLogin()));
@@ -58,7 +68,7 @@ public class ListDAO implements DAO {
     }
 
     @Override
-    public Genre getGenre(int id) {
+    public Item getGenre(int id) {
         return null;
     }
 
