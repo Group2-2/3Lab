@@ -1,15 +1,15 @@
 package group.two.two.lab3.model;
 
-public class Genre {
+public class Item {
     private String name;
     private Integer genre = null;
     private String about;
 
-    public Genre() {
+    public Item() {
 
     }
 
-    public Genre(String name, Integer genre, String about) {
+    public Item(String name, Integer genre, String about) {
         this.name = name;
         this.genre = genre;
         this.about = about;

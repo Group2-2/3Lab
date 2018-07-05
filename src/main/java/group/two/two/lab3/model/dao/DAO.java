@@ -5,11 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface DAO {
+    void connection();
+    void disconnection();
     boolean login(Login login);
     boolean register(User user);
     User getUser(String login);
     Author getAuthor(int id);
-    Genre getGenre(int id);
+    Item getGenre(int id);
     Book getBook(int id);
-
 }
