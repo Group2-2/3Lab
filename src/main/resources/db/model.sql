@@ -69,7 +69,6 @@ dbms_output.put_line('i alive');
 EXCEPTION
 	when others then
 		dbms_output.put_line('exeption');
-		rollback;
 end;
 /
 
