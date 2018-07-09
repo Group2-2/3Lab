@@ -1,8 +1,9 @@
-package group.two.two.lab3.model;
+package group.two.two.lab3.model.entities;
 
 import java.util.Objects;
 
 public class Login {
+
     private String login;
     private String password;
 

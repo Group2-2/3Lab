@@ -1,6 +1,6 @@
 package group.two.two.lab3.model.dao;
 
-import group.two.two.lab3.model.*;
+import group.two.two.lab3.model.entities.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -39,7 +39,6 @@ public class ListDAO implements DAO {
 
     }
 
-    @Override
     public boolean login(Login login) {
         if (map.containsKey(login.getLogin())) {
             Login buf = new Login(map.get(login.getLogin()));
@@ -48,7 +47,6 @@ public class ListDAO implements DAO {
         return false;
     }
 
-    @Override
     public boolean register(User user) {
         if (!map.containsKey(user.getLogin())) {
             map.put(user.getLogin(), user);
@@ -57,22 +55,21 @@ public class ListDAO implements DAO {
         return false;
     }
 
-    @Override
     public User getUser(String login) {
         return map.get(login);
     }
 
-    @Override
+
     public Author getAuthor(int id) {
         return null;
     }
 
-    @Override
+
     public Item getGenre(int id) {
         return null;
     }
 
-    @Override
+
     public Book getBook(int id) {
         return null;
     }

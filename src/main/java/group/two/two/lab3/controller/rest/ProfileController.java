@@ -1,8 +1,8 @@
 package group.two.two.lab3.controller.rest;
 
 import group.two.two.lab3.model.Answer;
-import group.two.two.lab3.model.Login;
-import group.two.two.lab3.model.User;
+import group.two.two.lab3.model.entities.Login;
+import group.two.two.lab3.model.entities.User;
 import group.two.two.lab3.model.dao.DAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

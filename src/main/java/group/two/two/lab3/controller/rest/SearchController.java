@@ -2,6 +2,10 @@ package group.two.two.lab3.controller.rest;
 
 import group.two.two.lab3.model.*;
 import group.two.two.lab3.model.dao.DAO;
+import group.two.two.lab3.model.entities.Author;
+import group.two.two.lab3.model.entities.Book;
+import group.two.two.lab3.model.entities.Item;
+import group.two.two.lab3.model.entities.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +43,7 @@ public class SearchController {
     @RequestMapping(value = "/book", method = RequestMethod.POST, produces = {"application/json"})
     @ResponseBody
     Answer<Book> book(@RequestParam(value="id", defaultValue="0") int id,
-                        HttpSession session) {
+                      HttpSession session) {
         Login login = (Login) session.getAttribute("login");
         Book book = null;
         if (login != null && dao.login(login)) {
