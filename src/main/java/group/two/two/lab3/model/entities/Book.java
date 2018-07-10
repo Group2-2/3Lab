@@ -1,6 +1,7 @@
 package group.two.two.lab3.model.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Book {
@@ -9,7 +10,7 @@ public class Book {
     private double price;
     private int amount;
     private String publishing_house;
-    private ArrayList <Author> authors;
+    private List <Author> authors;
 
     public Book() {
     }
@@ -22,7 +23,7 @@ public class Book {
         this.publishing_house = publishing_house;
     }
 
-    public Book(Item item, int year, double price, int amount, String publishing_house, ArrayList<Author> authors) {
+    public Book(Item item, int year, double price, int amount, String publishing_house, List<Author> authors) {
         this.item = item;
         this.year = year;
         this.price = price;
@@ -39,20 +40,12 @@ public class Book {
         this.item = item;
     }
 
-    public ArrayList<Author> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
     public void setAuthors(ArrayList<Author> authors) {
         this.authors = authors;
-    }
-
-    public Item getItem_id() {
-        return item;
-    }
-
-    public void setItem_id(Item item_id) {
-        this.item = item_id;
     }
 
     public int getYear() {

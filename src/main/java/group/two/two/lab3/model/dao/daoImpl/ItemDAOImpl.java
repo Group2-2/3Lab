@@ -18,6 +18,9 @@ public class ItemDAOImpl implements ItemDAO {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
+    /**
+     * пока неизвестно будем использовать или нет
+     */
     private List<Item> Items;
 
     @Override

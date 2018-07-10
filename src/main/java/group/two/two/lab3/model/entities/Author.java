@@ -12,6 +12,13 @@ public class Author {
 
     }
 
+    public Author(int author_id, String name, String surname, String description) {
+        this.author_id = author_id;
+        this.name = name;
+        this.surname = surname;
+        this.description = description;
+    }
+
     public int getAuthor_id() {
         return author_id;
     }
