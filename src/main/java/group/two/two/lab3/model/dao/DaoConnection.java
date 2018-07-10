@@ -20,7 +20,7 @@ public class DaoConnection {
     private static String url;
     private static String user;
     private static String password;
-    private static DaoConnection instanse = new DaoConnection();
+    private static DaoConnection instance = new DaoConnection();
 
     private DaoConnection () {
         try {
