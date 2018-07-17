@@ -49,4 +49,11 @@ public class Login {
 
         return Objects.hash(login, password);
     }
+
+    public boolean checkLogin() {
+        if (this.login.isEmpty() || this.password.isEmpty()) {
+            return  false;
+        }
+        return true;
+    }
 }
