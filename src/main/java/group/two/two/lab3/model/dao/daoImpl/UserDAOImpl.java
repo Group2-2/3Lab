@@ -57,7 +57,7 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(1, login);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next())  {
-                if (login.equals(resultSet.getString("LOGIN")) && password.equals(resultSet.getString("PASSWORD")) {
+                if (login.equals(resultSet.getString("LOGIN")) && password.equals(resultSet.getString("PASSWORD"))) {
                     return true;
                 }
             }
@@ -68,12 +68,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean login(Login login) {
-        if(!login.checkLogin()) {
-            return false;
-        }
-        return login(login.getLogin(), login.getPassword());
+        return login.checkLogin() && login(login.getLogin(), login.getPassword());
     }
-    
+
     @Override
     public boolean registr(User user) {
         if(!user.checkUser()) {
@@ -91,12 +88,12 @@ public class UserDAOImpl implements UserDAO {
         try {
             preparedStatement = connection.prepareStatement("insert into users (user_id, name, surname, e_mail, password, login, phone_number) \n" +
                     "values (get_id.nextval, ?, ?, ?, ?, ?, ?)");
-            preparedStatement.setString(2, user.getName());
-            preparedStatement.setString(3, user.getSurname());
-            preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setString(5,user.getLogin().getPassword());
-            preparedStatement.setString(6, user.getLogin().getLogin());
-            preparedStatement.setString(7, user.getPhone_number());
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getSurname());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4,user.getLogin().getPassword());
+            preparedStatement.setString(5, user.getLogin().getLogin());
+            preparedStatement.setString(6, user.getPhone_number());
             preparedStatement.executeQuery();
         } catch (SQLException e) {
 
