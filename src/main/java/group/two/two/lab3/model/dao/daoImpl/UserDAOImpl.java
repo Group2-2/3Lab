@@ -1,18 +1,33 @@
 package group.two.two.lab3.model.dao.daoImpl;
 
+import group.two.two.lab3.model.dao.DaoConnection;
 import group.two.two.lab3.model.dao.UserDAO;
 import group.two.two.lab3.model.entities.Login;
 import group.two.two.lab3.model.entities.User;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class UserDAOImpl implements UserDAO {
+
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+
     @Override
     public void connection() {
-
+        connection = DaoConnection.getConnection();
     }
 
     @Override
     public void disconnection() {
-
+        try {
+            DaoConnection.disconnection(preparedStatement, resultSet, connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -30,14 +45,65 @@ public class UserDAOImpl implements UserDAO {
         return null;
     }
 
+
     @Override
-    public boolean login(String login) {
-        return false;
+    public boolean login(String login, String password) {
+        if (login == null || password == null) {
+            return false;
+        }
+        connection();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT  LOGIN, PASSWORD from USERS where login = ?");
+            preparedStatement.setString(1, login);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())  {
+                if (login.equals(resultSet.getString("LOGIN")) && password.equals(resultSet.getString("PASSWORD")) {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {}
+        disconnection();
+        return true;
     }
 
+    @Override
+    public boolean login(Login login) {
+        if(!login.checkLogin()) {
+            return false;
+        }
+        return login(login.getLogin(), login.getPassword());
+    }
+    
     @Override
     public boolean registr(User user) {
+        if(!user.checkUser()) {
+            return false;
+        }
+        connection();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT  1 from USERS where login = ?");
+            preparedStatement.setString(1, user.getLogin().getLogin());
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())  {
+                return false;
+            }
+        } catch (SQLException e) {}
+        try {
+            preparedStatement = connection.prepareStatement("insert into users (user_id, name, surname, e_mail, password, login, phone_number) \n" +
+                    "values (get_id.nextval, ?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.setString(3, user.getSurname());
+            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(5,user.getLogin().getPassword());
+            preparedStatement.setString(6, user.getLogin().getLogin());
+            preparedStatement.setString(7, user.getPhone_number());
+            preparedStatement.executeQuery();
+        } catch (SQLException e) {
 
+        }
+        disconnection();
         return false;
     }
+
+
 }

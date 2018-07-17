@@ -25,7 +25,7 @@ public class User {
     }
 
     public boolean checkUser() {
-        if (this.user_id == 0 || this.name.isEmpty() || this.surname.isEmpty() || this.login == null) {
+        if (this.name == null || "".equals(this.name) || this.surname == null ||  "".equals(this.surname) || this.login == null) {
             return false;
         }
         return this.login.checkLogin();

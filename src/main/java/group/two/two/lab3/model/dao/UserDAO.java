@@ -9,10 +9,8 @@ public interface UserDAO extends DAO {
 
     /**
      * for login user
-     * @param login
-     * @return
      */
-    boolean login(String login);
+    boolean login(String login, String password);
 
     /**
      * for registration user
@@ -20,4 +18,6 @@ public interface UserDAO extends DAO {
      * @return
      */
     boolean registr(User user);
+
+    boolean login(Login login);
 }
