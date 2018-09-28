@@ -45,7 +45,7 @@ public class BookDAOImpl implements BookDAO {
                     "item_id, amount, year, price, publishing_house" +
                     "from" +
                     "  GOOD_ATTRS" +
-                    "where" +
+                    "where " +
                     "  item_id = ?");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
